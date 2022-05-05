@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="css/header.css">
+
+
+</head>
+<body>
+<% if (user) { %>
+<% if (user.isAdmin) { %>
+<table class="table table-dark">
+    <thead>
+    <tr>
+        <th scope="col"></th>
+        <th scope="col" ><a href="/?sort=uname">Login</a></th>
+        <th scope="col" ><a href="/?sort=password">Password</a></th>
+        <th scope="col" ><a href="/?sort=isAdmin">isAdmin</a></th>
+        <th scope="col" ><a href="/?sort=email">Email</a></th>
+        <th scope="col" ><a href="/?sort=city">City</a></th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for (var i = 0; i < users.length; i++) { %>
+    <tr>
+        <form action="change" method="post">
+            <th scope="row"><%=i%></th>
+            <td><input name="unameNew" value="<%=users[i].uname%>"></td>
+            <td><input name="password" value="<%=users[i].password%>"></td>
+            <td>
+                <input name="isAdmin" value="<%=users[i].isAdmin%>">
+            </td>
+            <td><input type="email" name="email" value="<%=users[i].email%>"></td>
+            <td><input name="city" value="<%=users[i].city%>"></td>
+            <td>
+            <input name="uname" value="<%=users[i].uname%>" hidden>
+            <button type="submit">v</button>
+        </form>
+            <form action="delete" method="post">
+                <input name="uname" value="<%=users[i].uname%>" hidden>
+                <button type="submit">x</button>
+            </form>
+        </td>
+    </tr>
+    <% } %>
+    <tr>
+        <form action="register" method="post">
+            <th scope="row"><%=i%></th>
+            <td><input name="uname" value=""></td>
+            <td><input name="password" value=""></td>
+            <td>
+                <input name="isAdmin" value="">
+            </td>
+            <td><input type="email" name="email" value=""></td>
+            <td>
+                <input name="city" value="">
+            </td>
+            <td>
+                <button type="submit">v</button>
+            </td>
+        </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<% } %>
+<% } %>
+</body>
+</html>
