@@ -27,7 +27,7 @@ function updateVisitDate(uname, message) {
         $set: {
             lastVisit: (date + ' ' + message)
         }
-    })
+    }).then()
 }
 
 function register(uname, password, isAdmin) {
